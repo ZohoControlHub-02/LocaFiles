@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prevo Control Hub</title>
+<title>Zoho Control Hub 01</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap');
 :root{
@@ -188,7 +188,7 @@ td{padding:10px 16px;vertical-align:middle}
 <div id="setup">
   <div class="setup-box">
     <div class="setup-icon">&#9889;</div>
-    <h2>Prevo Control Hub</h2>
+    <h2>Zoho Control Hub 01</h2>
     <p>Enter your Hub URL to connect</p>
     <div class="field">
       <label>HUB URL</label>
@@ -209,7 +209,7 @@ td{padding:10px 16px;vertical-align:middle}
 <div class="topbar">
   <div class="brand">
     <div class="brand-icon">&#9889;</div>
-    Prevo Control Hub
+    Zoho Control Hub 01
     <div class="live-dot"></div>
   </div>
   <div class="topbar-right">
@@ -524,7 +524,8 @@ function updateStats() {
   var act  = accounts.filter(function(a){ return a.status === 'Active'; }).length;
   var sus  = accounts.filter(function(a){ return a.status === 'Suspended'; }).length;
   var tot  = accounts.length;
-  var snt  = accounts.reduce(function(s,a){ return s + (parseInt(a.emailsSentToday)||0); }, 0);
+  // [Fix] الإجمالي من Scripts_Health بدل Accounts — نفس مصدر بطاقات السكريبتات
+  var snt  = scripts.reduce(function(s,sc){ return s + (parseInt(sc.todaySent)||0); }, 0);
   var alv  = scripts.filter(function(s){ return s.status === 'alive'; }).length;
   anim('s-act', act); anim('s-sus', sus); anim('s-tot', tot);
   anim('s-snt', snt); anim('s-alv', alv);
